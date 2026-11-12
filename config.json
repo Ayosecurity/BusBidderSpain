@@ -1,0 +1,26 @@
+{
+  "data_dir": "data",
+  "companies_file": "data/companies.csv",
+  "destinations_file": "data/destinations.csv",
+  "offers_file": "data/offers.csv",
+  "profiles_file": "data/profiles.json",
+  "bookings_file": "data/state/bookings.json",
+  "log_file": "logs/busbidder.log",
+  "rejected_file": "outputs/rejected_records.csv",
+  "review_file": "outputs/review_records.csv",
+
+  "rating_scale": [1.0, 5.0],
+  "price_outlier_factor": 3.0,
+
+  "scoring": {
+    "normalisation": "robust",
+    "iqr_factor": 1.5,
+    "robust_min_n": 5,
+    "min_spread": {"price": 5.0, "duration": 30.0, "co2": 2.0},
+    "missing_value_score": 50.0,
+    "tie_tolerance": 0.05,
+    "dominance_warning": 0.6
+  },
+
+  "default_weights": {"price": 0.40, "duration": 0.25, "departure": 0.15, "flexibility": 0.20}
+}

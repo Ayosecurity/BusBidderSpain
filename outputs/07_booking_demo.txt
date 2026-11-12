@@ -1,0 +1,23 @@
+====================================================
+  BOOKING CONFIRMATION - BusBidder Spain (simulated)
+====================================================
+  Reference : BBS-WRDPAX
+  Status    : CONFIRMED
+  Traveller : Lucia Fernandez
+  Journey   : Madrid -> Malaga
+  Date/time : 2026-07-12 07:10  (VerdeBus)
+  Seats     : 2 x EUR 44.49 = EUR 88.98
+  Fare      : changeable=yes, refundable=no, luggage 23 kg
+  Payment   : SIMULATED_PAID (no real payment taken)
+====================================================
+
+Ref         Status     Traveller        To      Date        Dep    Company   Seats    EUR
+----------  ---------  ---------------  ------  ----------  -----  --------  -----  -----
+BBS-WRDPAX  CONFIRMED  Lucia Fernandez  Malaga  2026-07-12  07:10  VerdeBus      2  88.98
+
+$ cancel
+BBS-WRDPAX cancelled. Simulated refund: EUR 0.00; travel voucher: EUR 83.98.
+
+Ref         Status     Traveller        To      Date        Dep    Company   Seats    EUR
+----------  ---------  ---------------  ------  ----------  -----  --------  -----  -----
+BBS-WRDPAX  CANCELLED  Lucia Fernandez  Malaga  2026-07-12  07:10  VerdeBus      2  88.98

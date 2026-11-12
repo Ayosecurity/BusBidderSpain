@@ -1,0 +1,68 @@
+===== normalisation = minmax =====
+$ python -m busbidder search --to Toledo --from-date 2026-07-12 --to-date 2026-07-12 --weights price=40,duration=25,departure=15,flexibility=20 --top 0
+
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Toledo
+  - date 2026-07-12 .. 2026-07-12
+  - seats >= 1
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 40%, duration 25%, departure 15%, flexibility 20%
+  - preferred departure: any
+
+9 offers match the destination and dates; 9 satisfy all hard constraints.
+
+#  Offer ID               Company         Date   Dep    Arr    Time      EUR  Trf  Fare  Pric  Dur  Dep  Flex  TOTAL
+-  ---------------------  --------------  -----  -----  -----  ----  -------  ---  ----  ----  ---  ---  ----  -----
+1  CAM-TOL-20260712-1830  Camino Express  12.07  18:30  19:35  1h05    15.49    0  CR      96   94  100   100   97.2
+2  CAM-TOL-20260712-0730  Camino Express  12.07  07:30  08:30  1h00    14.99    0  C-      97  100  100    60   90.7
+3  CAM-TOL-20260712-1200  Camino Express  12.07  12:00  13:40  1h40    14.49    1  CR      97   56  100   100   87.7
+4  VER-TOL-20260712-0800  VerdeBus        12.07  08:00  09:15  1h15    12.99    0  C-      98   83  100    60   86.9
+5  NOC-TOL-20260712-2215  NocheVia        12.07  22:15  23:50  1h35    10.99    0  C-      99   61  100    60   81.8
+6  VER-TOL-20260712-1730  VerdeBus        12.07  17:30  19:25  1h55    10.49    1  C-      99   39  100    60   76.4
+7  SOL-TOL-20260712-0700  SolRuta         12.07  07:00  08:30  1h30     8.99    0  --     100   67  100     0   71.7
+8  COS-TOL-20260712-0645  CostaLink       12.07  06:45  09:15  2h30     9.99    2  C-      99    0  100    60   66.8
+9  CAM-TOL-20260712-0815  Camino Express  12.07  08:15  09:20  1h05  189.00!    0  CR       0   94  100   100   58.6
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (40%), Dur = Duration (25%), Dep = Departure convenience (15%), Flex = Ticket flexibility (20%)
+
+RECOMMENDATION
+Camino Express 18:30 on 12 Jul ranks first with 97.2/100.
+Advantages: price EUR 15.49 (cheapest acceptable: EUR 8.99); journey time 1h05 (fastest acceptable: 1h00); a changeable + refundable fare; departure at 18:30.
+No major disadvantage; weakest point: journey time 1h05 (fastest acceptable: 1h00) (94/100 on duration).
+It leads Camino Express 07:30 by 6.5 points, mainly thanks to ticket flexibility.
+This is the best match only under the chosen constraints and weights (price 40%, duration 25%, departure 15%, flexibility 20%), not an objectively best ticket.
+
+
+===== normalisation = robust =====
+$ python -m busbidder search --to Toledo --from-date 2026-07-12 --to-date 2026-07-12 --weights price=40,duration=25,departure=15,flexibility=20 --top 0
+
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Toledo
+  - date 2026-07-12 .. 2026-07-12
+  - seats >= 1
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 40%, duration 25%, departure 15%, flexibility 20%
+  - preferred departure: any
+
+9 offers match the destination and dates; 9 satisfy all hard constraints.
+
+ #  Offer ID               Company         Date   Dep    Arr    Time      EUR  Trf  Fare  Pric  Dur  Dep  Flex  TOTAL
+--  ---------------------  --------------  -----  -----  -----  ----  -------  ---  ----  ----  ---  ---  ----  -----
+ 1  CAM-TOL-20260712-1830  Camino Express  12.07  18:30  19:35  1h05    15.49    0  CR      49   94  100   100   78.2
+ 2  NOC-TOL-20260712-2215  NocheVia        12.07  22:15  23:50  1h35    10.99    0  C-      84   61  100    60   76.0
+ 3  VER-TOL-20260712-0800  VerdeBus        12.07  08:00  09:15  1h15    12.99    0  C-      69   83  100    60   75.3
+ 4  CAM-TOL-20260712-0730  Camino Express  12.07  07:30  08:30  1h00    14.99    0  C-      53  100  100    60   73.2
+ 5  VER-TOL-20260712-1730  VerdeBus        12.07  17:30  19:25  1h55    10.49    1  C-      88   39  100    60   72.0
+ 6  SOL-TOL-20260712-0700  SolRuta         12.07  07:00  08:30  1h30     8.99    0  --     100   67  100     0   71.7
+7=  CAM-TOL-20260712-1200  Camino Express  12.07  12:00  13:40  1h40    14.49    1  CR      57   56  100   100   71.6
+ 8  COS-TOL-20260712-0645  CostaLink       12.07  06:45  09:15  2h30     9.99    2  C-      92    0  100    60   63.9
+ 9  CAM-TOL-20260712-0815  Camino Express  12.07  08:15  09:20  1h05  189.00!    0  CR       0   94  100   100   58.6
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (40%), Dur = Duration (25%), Dep = Departure convenience (15%), Flex = Ticket flexibility (20%)
+
+RECOMMENDATION
+Camino Express 18:30 on 12 Jul ranks first with 78.2/100.
+Advantages: journey time 1h05 (fastest acceptable: 1h00); a changeable + refundable fare; departure at 18:30.
+Disadvantages: price EUR 15.49 (cheapest acceptable: EUR 8.99).
+It leads NocheVia 22:15 by 2.2 points, mainly thanks to duration and ticket flexibility.
+This is the best match only under the chosen constraints and weights (price 40%, duration 25%, departure 15%, flexibility 20%), not an objectively best ticket.

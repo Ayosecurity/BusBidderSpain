@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "BusBidder: interactive",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "busbidder",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "BusBidder: example search (Malaga)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "busbidder",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "args": ["search", "--to", "Malaga", "--from-date", "2026-07-12", "--to-date", "2026-07-14",
+               "--budget", "50", "--period", "morning", "--max-transfers", "1", "--changeable"]
+    },
+    {
+      "name": "BusBidder: compare profiles",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "busbidder",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "args": ["compare", "--to", "Malaga", "--from-date", "2026-07-12", "--to-date", "2026-07-14",
+               "--budget", "50", "--max-transfers", "1"]
+    }
+  ]
+}

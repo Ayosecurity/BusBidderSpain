@@ -1,0 +1,148 @@
+$ python -m busbidder compare --to Malaga --from-date 2026-07-12 --to-date 2026-07-14 --budget 50 --max-transfers 1
+
+
+##############################################################################
+PROFILE: budget - Budget traveller: price matters most, accepts transfers and early/late buses
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Malaga
+  - date 2026-07-12 .. 2026-07-14
+  - seats >= 1
+  - price <= EUR 50.00
+  - transfers <= 1
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 60%, duration 15%, departure 10%, flexibility 5%, transfers 10%
+  - preferred departure: any
+
+28 offers match the destination and dates; 14 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 13, seat availability: 2
+
+#  Offer ID               Company    Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Trf  TOTAL
+-  ---------------------  ---------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ---  -----
+1  NOC-AGP-20260714-2215  NocheVia   14.07  22:15  07:00+1  8h45  29.99    0  --     100   20  100     0  100   83.0
+2  SOL-AGP-20260713-0700  SolRuta    13.07  07:00  15:20    8h20  31.49    0  --      92   34  100     0  100   80.1
+3  NOC-AGP-20260714-2330  NocheVia   14.07  23:30  08:35+1  9h05  31.49    0  C-      92    9  100    60  100   79.3
+4  NOC-AGP-20260713-2215  NocheVia   13.07  22:15  06:30+1  8h15  33.49    0  --      80   37  100     0  100   73.8
+5  COS-AGP-20260713-0645  CostaLink  13.07  06:45  13:50    7h05  36.49    0  --      64   77  100     0  100   69.8
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (60%), Dur = Duration (15%), Dep = Departure convenience (10%), Flex = Ticket flexibility (5%), Trf = Transfers (10%)
+(showing top 5 of 14; use --top 0 to show all)
+
+RECOMMENDATION
+NocheVia 22:15 on 14 Jul ranks first with 83.0/100.
+Advantages: the lowest price (EUR 29.99); departure at 22:15; a direct route.
+Disadvantages: journey time 8h45 (fastest acceptable: 6h25); a fixed (no changes) fare.
+It leads SolRuta 07:00 by 2.9 points, mainly thanks to price.
+This is the best match only under the chosen constraints and weights (price 60%, duration 15%, departure 10%, flexibility 5%, transfers 10%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: business - Business traveller: fast, direct, morning departure, must be changeable
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Malaga
+  - date 2026-07-12 .. 2026-07-14
+  - seats >= 1
+  - price <= EUR 50.00
+  - transfers <= 0
+  - changeable ticket
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 10%, duration 35%, departure 25%, flexibility 15%, transfers 15%
+  - preferred departure: morning
+
+28 offers match the destination and dates; 5 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 13, changeable ticket required: 8, maximum transfers: 5, seat availability: 2
+
+#  Offer ID               Company    Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Trf  TOTAL
+-  ---------------------  ---------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ---  -----
+1  VER-AGP-20260712-0710  VerdeBus   12.07  07:10  13:35    6h25  44.49    0  C-      21  100  100    60  100   86.1
+2  COS-AGP-20260713-0930  CostaLink  13.07  09:30  16:35    7h05  46.49    0  C-       9   75  100    60  100   76.1
+3  COS-AGP-20260713-0905  CostaLink  13.07  09:05  16:30    7h25  47.90    0  C-       0   62  100    60  100   70.9
+4  NOC-AGP-20260714-2330  NocheVia   14.07  23:30  08:35+1  9h05  31.49    0  C-     100    0    0    60  100   34.0
+5  NOC-AGP-20260714-2100  NocheVia   14.07  21:00  06:05+1  9h05  37.49    0  C-      63    0    0    60  100   30.3
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (10%), Dur = Duration (35%), Dep = Departure convenience (25%), Flex = Ticket flexibility (15%), Trf = Transfers (15%)
+
+RECOMMENDATION
+VerdeBus 07:10 on 12 Jul ranks first with 86.1/100.
+Advantages: the shortest journey (6h25); departure at 07:10; a direct route.
+Disadvantages: price EUR 44.49 (cheapest acceptable: EUR 31.49).
+It leads CostaLink 09:30 by 10.0 points, mainly thanks to duration and price.
+This is the best match only under the chosen constraints and weights (price 10%, duration 35%, departure 25%, flexibility 15%, transfers 15%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: flex_tourist - Flexibility-focused tourist: wants changeable/refundable fares and a well-rated company
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Malaga
+  - date 2026-07-12 .. 2026-07-14
+  - seats >= 1
+  - price <= EUR 50.00
+  - transfers <= 1
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 20%, duration 10%, departure 10%, flexibility 45%, rating 15%
+  - preferred departure: afternoon
+
+28 offers match the destination and dates; 14 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 13, seat availability: 2
+
+#  Offer ID               Company   Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Rate  TOTAL
+-  ---------------------  --------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ----  -----
+1  SOL-AGP-20260714-1345  SolRuta   14.07  13:45  22:40    8h55  35.49    1  -R      69   14  100    50    72   58.7
+2  NOC-AGP-20260713-2100  NocheVia  13.07  21:00  06:20+1  9h20  32.99    1  C-      83    0   40    60    72   58.5
+3  NOC-AGP-20260714-2330  NocheVia  14.07  23:30  08:35+1  9h05  31.49    0  C-      92    9    0    60    75   57.4
+4  NOC-AGP-20260714-2100  NocheVia  14.07  21:00  06:05+1  9h05  37.49    0  C-      58    9   40    60    75   54.7
+5  VER-AGP-20260712-0710  VerdeBus  12.07  07:10  13:35    6h25  44.49    0  C-      19  100    3    60    85   53.9
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (20%), Dur = Duration (10%), Dep = Departure convenience (10%), Flex = Ticket flexibility (45%), Rate = Customer rating (15%)
+(showing top 5 of 14; use --top 0 to show all)
+
+RECOMMENDATION
+SolRuta 13:45 on 14 Jul ranks first with 58.7/100.
+Advantages: departure at 13:45.
+Disadvantages: journey time 8h55 (fastest acceptable: 6h25).
+It is practically tied with NocheVia 21:00 (gap 0.1 points): a small change in the weights could reverse the order, so compare both.
+This is the best match only under the chosen constraints and weights (price 20%, duration 10%, departure 10%, flexibility 45%, rating 15%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: eco - Environment-focused traveller: low estimated CO2, direct routes, reasonable price
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Malaga
+  - date 2026-07-12 .. 2026-07-14
+  - seats >= 1
+  - price <= EUR 50.00
+  - transfers <= 1
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 25%, duration 10%, departure 5%, flexibility 10%, co2 40%, transfers 10%
+  - preferred departure: any
+
+28 offers match the destination and dates; 14 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 13, seat availability: 2
+
+#  Offer ID               Company   Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  CO2  Trf  TOTAL
+-  ---------------------  --------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ---  ---  -----
+1  VER-AGP-20260712-0710  VerdeBus  12.07  07:10  13:35    6h25  44.49    0  C-      19  100  100    60  100  100   75.8
+2  NOC-AGP-20260714-2330  NocheVia  14.07  23:30  08:35+1  9h05  31.49    0  C-      92    9  100    60   59  100   68.3
+3  NOC-AGP-20260714-2215  NocheVia  14.07  22:15  07:00+1  8h45  29.99    0  --     100   20  100     0   59  100   65.5
+4  NOC-AGP-20260713-2215  NocheVia  13.07  22:15  06:30+1  8h15  33.49    0  --      80   37  100     0   59  100   62.4
+5  SOL-AGP-20260713-0700  SolRuta   13.07  07:00  15:20    8h20  31.49    0  --      92   34  100     0  50*  100   61.3
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (25%), Dur = Duration (10%), Dep = Departure convenience (5%), Flex = Ticket flexibility (10%), CO2 = Est. CO2 (40%), Trf = Transfers (10%)
+(showing top 5 of 14; use --top 0 to show all)
+
+RECOMMENDATION
+VerdeBus 07:10 on 12 Jul ranks first with 75.8/100.
+Advantages: estimated 6.7 kg CO2 per passenger; the shortest journey (6h25); a direct route; departure at 07:10.
+Disadvantages: price EUR 44.49 (cheapest acceptable: EUR 29.99).
+It leads NocheVia 23:30 by 7.5 points, mainly thanks to est. co2 and duration.
+This is the best match only under the chosen constraints and weights (price 25%, duration 10%, departure 5%, flexibility 10%, co2 40%, transfers 10%), not an objectively best ticket.
+
+==============================================================================
+SUMMARY: top offer per profile (same offers, same trip)
+
+Profile       Top offer              Company   Dep    Time    EUR  Fare                Score  #OK
+------------  ---------------------  --------  -----  ----  -----  ------------------  -----  ---
+budget        NOC-AGP-20260714-2215  NocheVia  22:15  8h45  29.99  fixed (no changes)   83.0   14
+business      VER-AGP-20260712-0710  VerdeBus  07:10  6h25  44.49  changeable           86.1    5
+flex_tourist  SOL-AGP-20260714-1345  SolRuta   13:45  8h55  35.49  refundable           58.7   14
+eco           VER-AGP-20260712-0710  VerdeBus  07:10  6h25  44.49  changeable           75.8   14

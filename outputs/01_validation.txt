@@ -1,0 +1,32 @@
+$ python -m busbidder validate
+
+Rows read: 1048
+Accepted: 1036 (of which corrected: 2, flagged for review: 1)
+Rejected: 12
+
+Rejected records:
+Line  Offer ID               Reasons
+----  ---------------------  ------------------------
+1035  SOL-AGP-20260712-0915  NEGATIVE_PRICE
+1036  CAM-XXX-20260712-1000  UNKNOWN_DESTINATION
+1037  COS-AGP-20260732-0800  INVALID_DATE
+1038  VER-AGP-20260713-1500  ARRIVAL_BEFORE_DEPARTURE
+1039  CAM-AGP-20260713-1100  RATING_OUT_OF_SCALE
+1040  SOL-AGP-20260714-1015  NEGATIVE_SEATS
+1041  NOC-AGP-20260714-2200  MISSING_PRICE
+1042  badid-123              MALFORMED_OFFER_ID
+1043  XYZ-AGP-20260712-0900  UNKNOWN_COMPANY
+1044  COS-VLC-20260712-0945  INVALID_PRICE
+1045  VER-SVQ-20260712-1400  INVALID_TRANSFERS
+1049  SOL-BCN-20260714-1630  DUPLICATE_ID
+
+Corrected records:
+  COS-AGP-20260713-0905: destination ' málaga ' -> 'Malaga'; price '47,90' -> decimal point; changeable 'Y' -> yes; refundable 'n' -> no
+  VER-AGP-20260712-0710: company_id 'ver' -> 'VER'; destination 'MALAGA' -> 'Malaga'; changeable 'TRUE' -> yes; refundable 'false' -> no
+
+Kept but flagged for review:
+  CAM-TOL-20260712-0815: price 189.00 > 3 x median 10.99
+
+Informational flags on accepted offers: MISSING_CO2 61, MISSING_RATING 25, PRICE_OUTLIER 1, SOLD_OUT 43
+
+Details written to /home/claude/BusBidderSpain/outputs/rejected_records.csv and /home/claude/BusBidderSpain/outputs/review_records.csv; log: /home/claude/BusBidderSpain/logs/busbidder.log

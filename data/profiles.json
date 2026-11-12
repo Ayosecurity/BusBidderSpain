@@ -1,0 +1,26 @@
+{
+  "budget": {
+    "description": "Budget traveller: price matters most, accepts transfers and early/late buses",
+    "weights": {"price": 0.60, "duration": 0.15, "departure": 0.10, "flexibility": 0.05, "transfers": 0.10},
+    "preferred_period": "any",
+    "constraints": {}
+  },
+  "business": {
+    "description": "Business traveller: fast, direct, morning departure, must be changeable",
+    "weights": {"price": 0.10, "duration": 0.35, "departure": 0.25, "flexibility": 0.15, "transfers": 0.15},
+    "preferred_period": "morning",
+    "constraints": {"require_changeable": true, "max_transfers": 0}
+  },
+  "flex_tourist": {
+    "description": "Flexibility-focused tourist: wants changeable/refundable fares and a well-rated company",
+    "weights": {"price": 0.20, "duration": 0.10, "departure": 0.10, "flexibility": 0.45, "rating": 0.15},
+    "preferred_period": "afternoon",
+    "constraints": {}
+  },
+  "eco": {
+    "description": "Environment-focused traveller: low estimated CO2, direct routes, reasonable price",
+    "weights": {"price": 0.25, "duration": 0.10, "departure": 0.05, "flexibility": 0.10, "co2": 0.40, "transfers": 0.10},
+    "preferred_period": "any",
+    "constraints": {}
+  }
+}

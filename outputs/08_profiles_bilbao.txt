@@ -1,0 +1,146 @@
+$ python -m busbidder compare --to Bilbao --from-date 2026-07-10 --to-date 2026-07-12 --budget 45
+
+
+##############################################################################
+PROFILE: budget - Budget traveller: price matters most, accepts transfers and early/late buses
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Bilbao
+  - date 2026-07-10 .. 2026-07-12
+  - seats >= 1
+  - price <= EUR 45.00
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 60%, duration 15%, departure 10%, flexibility 5%, transfers 10%
+  - preferred departure: any
+
+30 offers match the destination and dates; 20 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 10, seat availability: 1
+
+#  Offer ID               Company   Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Trf  TOTAL
+-  ---------------------  --------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ---  -----
+1  SOL-BIO-20260712-1630  SolRuta   12.07  16:30  22:50    6h20  24.99    0  --     100   35  100     0  100   85.2
+2  SOL-BIO-20260711-1630  SolRuta   11.07  16:30  23:10    6h40  24.99    0  --     100   15  100     0  100   82.2
+3  SOL-BIO-20260710-1630  SolRuta   10.07  16:30  22:55    6h25  26.49    0  --      92   30  100     0  100   80.0
+4  NOC-BIO-20260712-2330  NocheVia  12.07  23:30  05:55+1  6h25  29.49    0  --      78   30  100     0  100   71.0
+5  NOC-BIO-20260712-2215  NocheVia  12.07  22:15  04:35+1  6h20  29.99    0  --      75   35  100     0  100   70.2
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (60%), Dur = Duration (15%), Dep = Departure convenience (10%), Flex = Ticket flexibility (5%), Trf = Transfers (10%)
+(showing top 5 of 20; use --top 0 to show all)
+
+RECOMMENDATION
+SolRuta 16:30 on 12 Jul ranks first with 85.2/100.
+Advantages: the lowest price (EUR 24.99); departure at 16:30; a direct route.
+Disadvantages: journey time 6h20 (fastest acceptable: 5h15); a fixed (no changes) fare.
+It leads SolRuta 16:30 by 3.0 points, mainly thanks to duration.
+This is the best match only under the chosen constraints and weights (price 60%, duration 15%, departure 10%, flexibility 5%, transfers 10%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: business - Business traveller: fast, direct, morning departure, must be changeable
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Bilbao
+  - date 2026-07-10 .. 2026-07-12
+  - seats >= 1
+  - price <= EUR 45.00
+  - transfers <= 0
+  - changeable ticket
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 10%, duration 35%, departure 25%, flexibility 15%, transfers 15%
+  - preferred departure: morning
+
+30 offers match the destination and dates; 6 satisfy all hard constraints.
+Removed (an offer can fail several): changeable ticket required: 15, maximum budget: 10, maximum transfers: 1, seat availability: 1
+
+#  Offer ID               Company    Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Trf  TOTAL
+-  ---------------------  ---------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ---  -----
+1  COS-BIO-20260710-0930  CostaLink  10.07  09:30  15:10    5h40  44.49    0  C-       0   83  100    60  100   78.2
+2  SOL-BIO-20260711-1115  SolRuta    11.07  11:15  17:55    6h40  33.49    0  C-     100   17  100    60  100   64.8
+3  COS-BIO-20260711-2000  CostaLink  11.07  20:00  01:25+1  5h25  38.99    0  C-      42  100    0    60  100   63.2
+4  NOC-BIO-20260712-2100  NocheVia   12.07  21:00  03:25+1  6h25  35.49    0  C-      79   33    0    60  100   43.6
+5  NOC-BIO-20260710-2215  NocheVia   10.07  22:15  05:05+1  6h50  38.49    0  CR      47    6    0   100  100   36.7
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (10%), Dur = Duration (35%), Dep = Departure convenience (25%), Flex = Ticket flexibility (15%), Trf = Transfers (15%)
+(showing top 5 of 6; use --top 0 to show all)
+
+RECOMMENDATION
+CostaLink 09:30 on 10 Jul ranks first with 78.2/100.
+Advantages: journey time 5h40 (fastest acceptable: 5h25); departure at 09:30; a direct route.
+Disadvantages: price EUR 44.49 (cheapest acceptable: EUR 33.49); a changeable fare.
+It leads SolRuta 11:15 by 13.3 points, mainly thanks to duration.
+This is the best match only under the chosen constraints and weights (price 10%, duration 35%, departure 25%, flexibility 15%, transfers 15%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: flex_tourist - Flexibility-focused tourist: wants changeable/refundable fares and a well-rated company
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Bilbao
+  - date 2026-07-10 .. 2026-07-12
+  - seats >= 1
+  - price <= EUR 45.00
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 20%, duration 10%, departure 10%, flexibility 45%, rating 15%
+  - preferred departure: afternoon
+
+30 offers match the destination and dates; 20 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 10, seat availability: 1
+
+#  Offer ID               Company    Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Rate  TOTAL
+-  ---------------------  ---------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ----  -----
+1  NOC-BIO-20260711-2215  NocheVia   11.07  22:15  05:10+1  6h55  37.99    0  CR      35    0   15   100    72   64.4
+2  NOC-BIO-20260710-2215  NocheVia   10.07  22:15  05:05+1  6h50  38.49    0  CR      32    5   15   100    65   63.2
+3  VER-BIO-20260710-1400  VerdeBus   10.07  14:00  20:25    6h25  36.99    1  C-      40   30  100    60    85   60.8
+4  COS-BIO-20260711-2000  CostaLink  11.07  20:00  01:25+1  5h25  38.99    0  C-      30   90   60    60    82   60.4
+5  SOL-BIO-20260711-1115  SolRuta    11.07  11:15  17:55    6h40  33.49    0  C-      58   15   85    60    62   57.9
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (20%), Dur = Duration (10%), Dep = Departure convenience (10%), Flex = Ticket flexibility (45%), Rate = Customer rating (15%)
+(showing top 5 of 20; use --top 0 to show all)
+
+RECOMMENDATION
+NocheVia 22:15 on 11 Jul ranks first with 64.4/100.
+Advantages: a changeable + refundable fare; customer rating 3.9/5.
+Disadvantages: price EUR 37.99 (cheapest acceptable: EUR 24.99); journey time 6h55 (fastest acceptable: 5h15); departure at 22:15.
+It leads NocheVia 22:15 by 1.1 points, mainly thanks to customer rating.
+This is the best match only under the chosen constraints and weights (price 20%, duration 10%, departure 10%, flexibility 45%, rating 15%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: eco - Environment-focused traveller: low estimated CO2, direct routes, reasonable price
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Bilbao
+  - date 2026-07-10 .. 2026-07-12
+  - seats >= 1
+  - price <= EUR 45.00
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 25%, duration 10%, departure 5%, flexibility 10%, co2 40%, transfers 10%
+  - preferred departure: any
+
+30 offers match the destination and dates; 20 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 10, seat availability: 1
+
+#  Offer ID               Company   Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  CO2  Trf  TOTAL
+-  ---------------------  --------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ---  ---  -----
+1  VER-BIO-20260710-1030  VerdeBus  10.07  10:30  15:50    5h20  43.99    0  -R       5   95  100    50  100  100   70.8
+2  VER-BIO-20260710-1400  VerdeBus  10.07  14:00  20:25    6h25  36.99    1  C-      40   30  100    60  100   50   69.0
+3  SOL-BIO-20260712-1630  SolRuta   12.07  16:30  22:50    6h20  24.99    0  --     100   35  100     0  50*  100   63.5
+4  NOC-BIO-20260712-2330  NocheVia  12.07  23:30  05:55+1  6h25  29.49    0  --      78   30  100     0   55  100   59.4
+5  NOC-BIO-20260712-2215  NocheVia  12.07  22:15  04:35+1  6h20  29.99    0  --      75   35  100     0   55  100   59.2
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (25%), Dur = Duration (10%), Dep = Departure convenience (5%), Flex = Ticket flexibility (10%), CO2 = Est. CO2 (40%), Trf = Transfers (10%)
+(showing top 5 of 20; use --top 0 to show all)
+
+RECOMMENDATION
+VerdeBus 10:30 on 10 Jul ranks first with 70.8/100.
+Advantages: estimated 5.0 kg CO2 per passenger; a direct route; journey time 5h20 (fastest acceptable: 5h15); departure at 10:30.
+Disadvantages: price EUR 43.99 (cheapest acceptable: EUR 24.99).
+It leads VerdeBus 14:00 by 1.8 points, mainly thanks to duration and transfers.
+This is the best match only under the chosen constraints and weights (price 25%, duration 10%, departure 5%, flexibility 10%, co2 40%, transfers 10%), not an objectively best ticket.
+
+==============================================================================
+SUMMARY: top offer per profile (same offers, same trip)
+
+Profile       Top offer              Company    Dep    Time    EUR  Fare                     Score  #OK
+------------  ---------------------  ---------  -----  ----  -----  -----------------------  -----  ---
+budget        SOL-BIO-20260712-1630  SolRuta    16:30  6h20  24.99  fixed (no changes)        85.2   20
+business      COS-BIO-20260710-0930  CostaLink  09:30  5h40  44.49  changeable                78.2    6
+flex_tourist  NOC-BIO-20260711-2215  NocheVia   22:15  6h55  37.99  changeable + refundable   64.4   20
+eco           VER-BIO-20260710-1030  VerdeBus   10:30  5h20  43.99  refundable                70.8   20

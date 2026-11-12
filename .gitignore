@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.idea/
+
+# Runtime files (created when the program runs)
+logs/*.log
+data/state/
+
+# Report drafts are submitted separately as PDF, not part of the code repository
+docs/report_draft.md
+docs/*.pdf
+docs/*.docx

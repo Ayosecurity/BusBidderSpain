@@ -1,0 +1,34 @@
+$ python -m busbidder search --to Malaga --from-date 2026-07-12 --to-date 2026-07-14 --budget 50 --period morning --max-transfers 1 --changeable --top 0
+
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Malaga
+  - date 2026-07-12 .. 2026-07-14
+  - seats >= 1
+  - price <= EUR 50.00
+  - transfers <= 1
+  - changeable ticket
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 40%, duration 25%, departure 15%, flexibility 20%
+  - preferred departure: morning
+
+28 offers match the destination and dates; 7 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 13, changeable ticket required: 8, seat availability: 2
+
+#  Offer ID               Company    Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  TOTAL
+-  ---------------------  ---------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  -----
+1  VER-AGP-20260712-0710  VerdeBus   12.07  07:10  13:35    6h25  44.49    0  C-      21  100  100    60   60.3
+2  NOC-AGP-20260714-2330  NocheVia   14.07  23:30  08:35+1  9h05  31.49    0  C-     100    9    0    60   54.1
+3  COS-AGP-20260713-0930  CostaLink  13.07  09:30  16:35    7h05  46.49    0  C-       9   77  100    60   49.7
+4  NOC-AGP-20260713-2100  NocheVia   13.07  21:00  06:20+1  9h20  32.99    1  C-      91    0    0    60   48.3
+5  SOL-AGP-20260712-0700  SolRuta    12.07  07:00  16:00    9h00  41.99    1  C-      36   11  100    60   44.3
+6  COS-AGP-20260713-0905  CostaLink  13.07  09:05  16:30    7h25  47.90    0  C-       0   66  100    60   43.4
+7  NOC-AGP-20260714-2100  NocheVia   14.07  21:00  06:05+1  9h05  37.49    0  C-      63    9    0    60   39.5
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (40%), Dur = Duration (25%), Dep = Departure convenience (15%), Flex = Ticket flexibility (20%)
+
+RECOMMENDATION
+VerdeBus 07:10 on 12 Jul ranks first with 60.3/100.
+Advantages: the shortest journey (6h25); departure at 07:10.
+Disadvantages: price EUR 44.49 (cheapest acceptable: EUR 31.49).
+It leads NocheVia 23:30 by 6.2 points, mainly thanks to duration and departure convenience.
+This is the best match only under the chosen constraints and weights (price 40%, duration 25%, departure 15%, flexibility 20%), not an objectively best ticket.

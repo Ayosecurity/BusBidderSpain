@@ -1,0 +1,14 @@
+$ python -m busbidder sensitivity --to Malaga --from-date 2026-07-12 --to-date 2026-07-14 --budget 50 --period morning --max-transfers 1 --changeable
+
+Baseline winner: VER-AGP-20260712-0710 (60.3) with weights price 40%, duration 25%, departure 15%, flexibility 20%
+
+Criterion    Shift  New winner             Result
+-----------  -----  ---------------------  -------
+price        -10%   VER-AGP-20260712-0710  same
+price        +10%   NOC-AGP-20260714-2330  CHANGES
+duration     -10%   NOC-AGP-20260714-2330  CHANGES
+duration     +10%   VER-AGP-20260712-0710  same
+departure    -10%   NOC-AGP-20260714-2330  CHANGES
+departure    +10%   VER-AGP-20260712-0710  same
+flexibility  -10%   VER-AGP-20260712-0710  same
+flexibility  +10%   VER-AGP-20260712-0710  same

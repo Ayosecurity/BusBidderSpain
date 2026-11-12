@@ -1,0 +1,20 @@
+flowchart TD
+    subgraph IN["Input files (data/ + config.json)"]
+        direction LR
+        C[companies.csv] --- D[destinations.csv] --- O[offers.csv] --- P[profiles.json] --- CFG[config.json]
+    end
+    IN --> V{"loader.py + validation.py<br/>parse, check, regex"}
+    V -- "impossible / ambiguous" --> REJ[("outputs/rejected_records.csv")]
+    V -- "suspicious: kept + flagged" --> REV[("outputs/review_records.csv")]
+    V -- "valid or safely corrected" --> ACC["Accepted offers<br/>(Offer objects)"]
+    U(["Traveller (cli.py)<br/>request + profile / weights"]) --> F
+    ACC --> F["filters.py<br/>HARD constraints<br/>constraint registry"]
+    F -- "removed offers + reasons" --> U
+    F --> S["scoring.py + ranking.py<br/>normalise to 0-100, weight,<br/>sort + tie-break<br/>criterion registry"]
+    S --> E["explain.py<br/>data-driven explanation"]
+    E --> R["Ranked table + recommendation"]
+    R --> U
+    U -- "selects offer" --> B["booking.py<br/>check seats, BBS reference,<br/>atomic save"]
+    B --> ST[("data/state/bookings.json<br/>bookings + seats taken")]
+    ST -. "reduces capacity at start-up" .-> ACC
+    L[("logs/busbidder.log<br/>written by all modules")]

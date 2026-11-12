@@ -1,0 +1,146 @@
+$ python -m busbidder compare --to Barcelona --from-date 2026-07-10 --to-date 2026-07-16 --budget 70
+
+
+##############################################################################
+PROFILE: budget - Budget traveller: price matters most, accepts transfers and early/late buses
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Barcelona
+  - date 2026-07-10 .. 2026-07-16
+  - seats >= 1
+  - price <= EUR 70.00
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 60%, duration 15%, departure 10%, flexibility 5%, transfers 10%
+  - preferred departure: any
+
+65 offers match the destination and dates; 53 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 12
+
+#  Offer ID               Company    Date   Dep    Arr       Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Trf  TOTAL
+-  ---------------------  ---------  -----  -----  -------  -----  -----  ---  ----  ----  ---  ---  ----  ---  -----
+1  SOL-BCN-20260714-1345  SolRuta    14.07  13:45  22:45     9h00  31.99    0  --      95   51  100     0  100   84.7
+2  SOL-BCN-20260714-1630  SolRuta    14.07  16:30  02:40+1  10h10  29.99    1  --     100   24  100     0   50   78.5
+3  SOL-BCN-20260712-1630  SolRuta    12.07  16:30  01:35+1   9h05  40.49    0  C-      74   49  100    60  100   74.6
+4  SOL-BCN-20260715-1115  SolRuta    15.07  11:15  21:55    10h40  32.49    1  --      94   12  100     0   50   73.0
+5  COS-BCN-20260713-2000  CostaLink  13.07  20:00  04:05+1   8h05  41.99    0  --      70   73  100     0  100   72.9
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (60%), Dur = Duration (15%), Dep = Departure convenience (10%), Flex = Ticket flexibility (5%), Trf = Transfers (10%)
+(showing top 5 of 53; use --top 0 to show all)
+
+RECOMMENDATION
+SolRuta 13:45 on 14 Jul ranks first with 84.7/100.
+Advantages: price EUR 31.99 (cheapest acceptable: EUR 29.99); departure at 13:45; a direct route.
+Disadvantages: a fixed (no changes) fare.
+It leads SolRuta 16:30 by 6.1 points, mainly thanks to transfers and duration.
+This is the best match only under the chosen constraints and weights (price 60%, duration 15%, departure 10%, flexibility 5%, transfers 10%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: business - Business traveller: fast, direct, morning departure, must be changeable
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Barcelona
+  - date 2026-07-10 .. 2026-07-16
+  - seats >= 1
+  - price <= EUR 70.00
+  - transfers <= 0
+  - changeable ticket
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 10%, duration 35%, departure 25%, flexibility 15%, transfers 15%
+  - preferred departure: morning
+
+65 offers match the destination and dates; 20 satisfy all hard constraints.
+Removed (an offer can fail several): changeable ticket required: 27, maximum transfers: 15, maximum budget: 12
+
+#  Offer ID               Company         Date   Dep    Arr    Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Trf  TOTAL
+-  ---------------------  --------------  -----  -----  -----  ----  -----  ---  ----  ----  ---  ---  ----  ---  -----
+1  CAM-BCN-20260714-0730  Camino Express  14.07  07:30  14:25  6h55  65.99    0  C-      14  100  100    60  100   85.4
+2  VER-BCN-20260713-1030  VerdeBus        13.07  10:30  18:30  8h00  69.99    0  CR       0   61  100   100  100   76.2
+3  VER-BCN-20260715-1030  VerdeBus        15.07  10:30  18:50  8h20  69.49    0  CR       2   48  100   100  100   71.9
+4  COS-BCN-20260714-0930  CostaLink       14.07  09:30  18:05  8h35  59.99    0  CR      34   38  100   100  100   71.8
+5  COS-BCN-20260716-0930  CostaLink       16.07  09:30  18:00  8h30  49.99    0  C-      68   41  100    60  100   70.3
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (10%), Dur = Duration (35%), Dep = Departure convenience (25%), Flex = Ticket flexibility (15%), Trf = Transfers (15%)
+(showing top 5 of 20; use --top 0 to show all)
+
+RECOMMENDATION
+Camino Express 07:30 on 14 Jul ranks first with 85.4/100.
+Advantages: the shortest journey (6h55); departure at 07:30; a direct route.
+Disadvantages: price EUR 65.99 (cheapest acceptable: EUR 40.49); a changeable fare.
+It leads VerdeBus 10:30 by 9.2 points, mainly thanks to duration and price.
+This is the best match only under the chosen constraints and weights (price 10%, duration 35%, departure 25%, flexibility 15%, transfers 15%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: flex_tourist - Flexibility-focused tourist: wants changeable/refundable fares and a well-rated company
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Barcelona
+  - date 2026-07-10 .. 2026-07-16
+  - seats >= 1
+  - price <= EUR 70.00
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 20%, duration 10%, departure 10%, flexibility 45%, rating 15%
+  - preferred departure: afternoon
+
+65 offers match the destination and dates; 53 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 12
+
+#  Offer ID               Company    Date   Dep    Arr       Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  Rate  TOTAL
+-  ---------------------  ---------  -----  -----  -------  -----  -----  ---  ----  ----  ---  ---  ----  ----  -----
+1  COS-BCN-20260713-1700  CostaLink  13.07  17:00  00:50+1   7h50  63.99    0  CR      15   78  100   100    85   78.6
+2  VER-BCN-20260713-1400  VerdeBus   13.07  14:00  22:25     8h25  61.49    0  CR      21   65  100   100    85   78.5
+3  VER-BCN-20260716-1730  VerdeBus   16.07  17:30  02:00+1   8h30  69.99    0  CR       0   63  100   100    85   74.0
+4  NOC-BCN-20260714-2215  NocheVia   14.07  22:15  08:55+1  10h40  39.49    1  CR      76   12   15   100    70   73.4
+5  VER-BCN-20260713-1030  VerdeBus   13.07  10:30  18:30     8h00  69.99    0  CR       0   75   70   100    90   73.0
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (20%), Dur = Duration (10%), Dep = Departure convenience (10%), Flex = Ticket flexibility (45%), Rate = Customer rating (15%)
+(showing top 5 of 53; use --top 0 to show all)
+
+RECOMMENDATION
+CostaLink 17:00 on 13 Jul ranks first with 78.6/100.
+Advantages: a changeable + refundable fare; customer rating 4.4/5; departure at 17:00; journey time 7h50 (fastest acceptable: 6h55).
+Disadvantages: price EUR 63.99 (cheapest acceptable: EUR 29.99).
+It is practically tied with VerdeBus 14:00 (gap 0.1 points): a small change in the weights could reverse the order, so compare both.
+This is the best match only under the chosen constraints and weights (price 20%, duration 10%, departure 10%, flexibility 45%, rating 15%), not an objectively best ticket.
+
+##############################################################################
+PROFILE: eco - Environment-focused traveller: low estimated CO2, direct routes, reasonable price
+##############################################################################
+HARD CONSTRAINTS (offers failing any are removed):
+  - destination = Barcelona
+  - date 2026-07-10 .. 2026-07-16
+  - seats >= 1
+  - price <= EUR 70.00
+SOFT PREFERENCES (used for ranking only):
+  - weights: price 25%, duration 10%, departure 5%, flexibility 10%, co2 40%, transfers 10%
+  - preferred departure: any
+
+65 offers match the destination and dates; 53 satisfy all hard constraints.
+Removed (an offer can fail several): maximum budget: 12
+
+#  Offer ID               Company   Date   Dep    Arr      Time    EUR  Trf  Fare  Pric  Dur  Dep  Flex  CO2  Trf  TOTAL
+-  ---------------------  --------  -----  -----  -------  ----  -----  ---  ----  ----  ---  ---  ----  ---  ---  -----
+1  VER-BCN-20260714-1730  VerdeBus  14.07  17:30  01:25+1  7h55  56.49    0  C-      34   76  100    60  100  100   77.1
+2  VER-BCN-20260713-1400  VerdeBus  13.07  14:00  22:25    8h25  61.49    0  CR      21   65  100   100  100  100   76.8
+3  VER-BCN-20260712-1400  VerdeBus  12.07  14:00  22:00    8h00  59.99    0  C-      25   75  100    60  100  100   74.7
+4  VER-BCN-20260715-1400  VerdeBus  15.07  14:00  22:55    8h55  48.99    1  C-      52   53  100    60  100   50   74.4
+5  VER-BCN-20260716-1400  VerdeBus  16.07  14:00  23:00    9h00  49.99    1  C-      50   51  100    60  100   50   73.6
+Criterion scores are 0-100 (100 = best). Fare: C = changeable, R = refundable. '=' tied with previous, '*' missing value (neutral 50), '!' price flagged for review.
+Columns: Pric = Price (25%), Dur = Duration (10%), Dep = Departure convenience (5%), Flex = Ticket flexibility (10%), CO2 = Est. CO2 (40%), Trf = Transfers (10%)
+(showing top 5 of 53; use --top 0 to show all)
+
+RECOMMENDATION
+VerdeBus 17:30 on 14 Jul ranks first with 77.1/100.
+Advantages: estimated 7.8 kg CO2 per passenger; a direct route; journey time 7h55 (fastest acceptable: 6h55); departure at 17:30.
+Disadvantages: price EUR 56.49 (cheapest acceptable: EUR 29.99).
+It is practically tied with VerdeBus 14:00 (gap 0.3 points): a small change in the weights could reverse the order, so compare both.
+This is the best match only under the chosen constraints and weights (price 25%, duration 10%, departure 5%, flexibility 10%, co2 40%, transfers 10%), not an objectively best ticket.
+
+==============================================================================
+SUMMARY: top offer per profile (same offers, same trip)
+
+Profile       Top offer              Company         Dep    Time    EUR  Fare                     Score  #OK
+------------  ---------------------  --------------  -----  ----  -----  -----------------------  -----  ---
+budget        SOL-BCN-20260714-1345  SolRuta         13:45  9h00  31.99  fixed (no changes)        84.7   53
+business      CAM-BCN-20260714-0730  Camino Express  07:30  6h55  65.99  changeable                85.4   20
+flex_tourist  COS-BCN-20260713-1700  CostaLink       17:00  7h50  63.99  changeable + refundable   78.6   53
+eco           VER-BCN-20260714-1730  VerdeBus        17:30  7h55  56.49  changeable                77.1   53
